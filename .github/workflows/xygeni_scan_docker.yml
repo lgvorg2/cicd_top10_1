@@ -71,7 +71,6 @@ jobs:
           echo Executing Xygeni scan ....   
           docker pull xygeni/xygeni_scanner:latest
           docker run \
-            -it \
             -v "${GITHUB_WORKSPACE}:/app" \
             -e XYGENI_TOKEN=${XYGENI_TOKEN} \
             -t xygeni/xygeni_scanner scan -n test --dir /app
