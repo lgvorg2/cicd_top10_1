@@ -73,7 +73,7 @@ jobs:
           docker run \
             -v "${GITHUB_WORKSPACE}:/app" \
             -e XYGENI_TOKEN=${XYGENI_TOKEN} \
-            -e GITHUB_PAT=${GITHUB_PAT } \
+            -e GITHUB_PAT=${GITHUB_PAT} \
             -t xygeni/xygeni_scanner scan -n test --dir /app
         env:
           GITHUB_PAT: ${{ secrets.GH_PAT }}
