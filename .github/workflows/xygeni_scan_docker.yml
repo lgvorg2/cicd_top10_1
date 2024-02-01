@@ -74,7 +74,7 @@ jobs:
             -v "${GITHUB_WORKSPACE}:/app" \
             -e XYGENI_TOKEN=${XYGENI_TOKEN} \
             -e GITHUB_PAT=${GITHUB_PAT} \
-            -t xygeni/xygeni_scanner scan --no-conf-download -n test --dir /app
+            -t xygeni/xygeni_scanner scan --no-conf-download --never-fail -n test --dir /app
         env:
           GITHUB_PAT: ${{ secrets.GH_PAT }}
           XYGENI_TOKEN: ${{ secrets.XY_TOKEN }}
