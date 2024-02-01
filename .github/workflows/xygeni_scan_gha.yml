@@ -71,4 +71,4 @@ jobs:
         with:
           token: ${{ secrets.XY_TOKEN }}
           gh_token: ${{ secrets.GH_PAT }}
-          command: scan --never-fail --no-conf-download -n ${{ env.XY_PRJ_NAME }} -e **/scanner/**
+          command: scan --never-fail --no-conf-download -n ${{ env.XY_PRJ_NAME }} 
