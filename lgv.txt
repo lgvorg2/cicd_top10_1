@@ -1,4 +1,4 @@
-
+zsd
 rmdir /s .git
 git init
 git config --global init.defaultBranch main
