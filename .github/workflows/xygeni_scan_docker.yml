@@ -4,14 +4,14 @@ name: Xygeni CI/CD Security Scan (Docker)
 
 # Controls when the workflow will run
 on:
-  #push: 
-  #  branches: [ "main" ]
+  push: 
+    branches: [ "mainxxxx" ]
   # Triggers the workflow on pull request events for the "main" branch
   #pull_request_target: 
   #  branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab sd
-  workflow_dispatch:
+  #workflow_dispatch:
  
 env:
   XY_USERNAME: ${{ secrets.XY_USERNAME_PRO }}
