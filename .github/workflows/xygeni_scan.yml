@@ -14,10 +14,10 @@ on:
   workflow_dispatch:
  
 env:
-  XY_USERNAME: ${{ secrets.XY_USERNAME_PRO }}
-  XY_PASSWORD: ${{ secrets.XY_PASSWORD_PRO }}
-  XY_URL: ${{ secrets.XY_URL_PRO }}
-  XY_PRJ_NAME: LGV-GH-${{ github.event.repository.name }}
+  XY_USERNAME: ${{ secrets.XY_USERNAME_PARTNERS }}
+  XY_PASSWORD: ${{ secrets.XY_PASSWORD_PARTNERS }}
+  XY_URL: ${{ secrets.XY_URL_PARTNERS }}
+  XY_PRJ_NAME: GitHub-${{ github.event.repository.name }}
 
 
 jobs:
@@ -78,7 +78,6 @@ jobs:
       - name: Execution Xygeni Scanner (vuln)
         run: |
           echo Executing Xygeni scan ....    
-          #${GITHUB_WORKSPACE}/scanner/xygeni inventory --no-conf-download --include-collaborators --upload -n ${{ env.XY_PRJ_NAME }}
           ${GITHUB_WORKSPACE}/scanner/xygeni scan --never-fail  -f none --include-collaborators --run="inventory,misconf,codetamper,deps,suspectdeps,secrets,compliance,iac" --no-conf-download -n ${{ env.XY_PRJ_NAME }} --dir ${GITHUB_WORKSPACE} -e **/scanner/**
         env:
           GITHUB_PAT: ${{ secrets.GH_PAT }}
